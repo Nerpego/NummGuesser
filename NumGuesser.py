@@ -2,8 +2,11 @@
 
 # Случайное число от нуля до ста
 min, max = 0, 100
+
 number = random.randint(min, max)
 left_limit, right_limit = min, max
+positiv_answ = ["Y", "y", "Yes", "yes"]
+negativ_answ = ["N", "n", "No", "no"]
 # Цикл угадываний
 while True:
     guess = input("Попробуй угадать! \n")
@@ -21,22 +24,13 @@ while True:
         else:
             while True:
                 answ = input("Поздравляю! Ты угадал! \n Продолжим? (Y/N):  ")
-                if (
-                    answ == "Y"
-                    or answ == "Yes"
-                    or answ == "y"
-                    or answ == "yes"
-                    or answ == "N"
-                    or answ == "No"
-                    or answ == "n"
-                    or answ == "no"
-                ):
+                if answ in positiv_answ or answ in negativ_answ:
                     break
-            if answ == "Y" or answ == "Yes" or answ == "y" or answ == "yes":
+            if answ in positiv_answ:
                 print("Поехали!")
                 number = random.randint(min, max)
                 left_limit, right_limit = min, max
-            if answ == "N" or answ == "No" or answ == "n" or answ == "no":
+            if answ in negativ_answ:
                 print("Конец.")
                 break
     else:
