@@ -7,9 +7,11 @@ number = random.randint(min, max)
 left_limit, right_limit = min, max
 positiv_answ = ["Y", "y", "Yes", "yes"]
 negativ_answ = ["N", "n", "No", "no"]
+guess_try = 0
 # Цикл угадываний
 while True:
     guess = input("Попробуй угадать! \n")
+    guess_try += 1
     # print(type(guess))
     if guess.isdigit():
         guess = int(guess)
@@ -23,10 +25,11 @@ while True:
             )
         else:
             while True:
-                answ = input("Поздравляю! Ты угадал! \n Продолжим? (Y/N):  ")
+                answ = input(f"Поздравляю! Ты угадал c {guess_try} попытки! \n Продолжим? (Y/N):  ")
                 if answ in positiv_answ or answ in negativ_answ:
                     break
             if answ in positiv_answ:
+                guess_try = 0
                 print("Поехали!")
                 number = random.randint(min, max)
                 left_limit, right_limit = min, max
